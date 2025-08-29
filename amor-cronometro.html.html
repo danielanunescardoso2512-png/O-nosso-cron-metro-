@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosso Amor em Tempo Real</title>
+  <style>
+    body {
+      background: #1c001f;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 400px;
+      margin: auto;
+    }
+    .box {
+      background: #2d0033;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .time {
+      font-size: 26px;
+      color: #ff5cad;
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 Nosso Amor em Tempo Real 💖</h1>
+  <p>Contando desde <b>03/05/2024 às 19:00</b></p>
+  <div class="container">
+    <div class="box"><span class="time" id="meses">-</span><br>MESES</div>
+    <div class="box"><span class="time" id="semanas">-</span><br>SEMANAS</div>
+    <div class="box"><span class="time" id="dias">-</span><br>DIAS</div>
+    <div class="box"><span class="time" id="horas">-</span><br>HORAS</div>
+    <div class="box"><span class="time" id="minutos">-</span><br>MIN</div>
+    <div class="box"><span class="time" id="segundos">-</span><br>SEG</div>
+  </div>
+
+  <div class="footer">Atualiza automaticamente a cada segundo</div>
+
+  <script>
+    const startDate = new Date("2024-05-03T19:00:00");
+
+    function atualizarContador() {
+      const agora = new Date();
+      let diff = Math.floor((agora - startDate) / 1000); // segundos totais
+
+      const meses = Math.floor(diff / (30*24*60*60));
+      const semanas = Math.floor(diff / (7*24*60*60));
+      const dias = Math.floor(diff / (24*60*60));
+      const horas = Math.floor((diff % (24*60*60)) / 3600);
+      const minutos = Math.floor((diff % 3600) / 60);
+      const segundos = diff % 60;
+
+      document.getElementById("meses").textContent = meses;
+      document.getElementById("semanas").textContent = semanas;
+      document.getElementById("dias").textContent = dias;
+      document.getElementById("horas").textContent = horas;
+      document.getElementById("minutos").textContent = minutos;
+      document.getElementById("segundos").textContent = segundos;
+    }
+
+    setInterval(atualizarContador, 1000);
+    atualizarContador();
+  </script>
+</body>
+</html>
